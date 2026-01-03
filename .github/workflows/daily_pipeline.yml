@@ -1,0 +1,43 @@
+name: Daily arXiv Embeddings Pipeline
+
+on:
+  schedule:
+    # Run Mon-Fri at 6:00 AM UTC (arXiv doesn't publish on weekends)
+    - cron: '0 6 * * 1-5'
+  workflow_dispatch:  # Allow manual trigger
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run daily pipeline notebook
+        env:
+          HOPSWORKS_API_KEY: ${{ secrets.HOPSWORKS_API_KEY }}
+          HOPSWORKS_FEATURE_STORE: ${{ secrets.HOPSWORKS_FEATURE_STORE }}
+        run: |
+          jupyter nbconvert --to notebook --execute notebooks/daily_pipeline.ipynb --output daily_pipeline_executed.ipynb
+
+      - name: Upload executed notebook as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: executed-notebook-${{ github.run_id }}
+          path: notebooks/daily_pipeline_executed.ipynb
+          retention-days: 7

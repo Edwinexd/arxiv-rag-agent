@@ -1,0 +1,17 @@
+# arXiv RSS parsing
+feedparser>=6.0.0
+
+# Embeddings
+sentence-transformers>=2.2.0
+torch>=2.0.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Hopsworks Feature Store
+hopsworks>=3.4.0
+
+# Jupyter notebook execution
+jupyter>=1.0.0
+nbconvert>=7.0.0

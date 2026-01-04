@@ -1,0 +1,20 @@
+# Gradio app
+gradio>=5.0.0
+huggingface-hub>=0.20.0
+
+# Embeddings for RAG
+sentence-transformers>=2.2.0
+torch>=2.0.0
+
+# Hopsworks Feature Store
+hopsworks[python]==4.2.*
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# HTTP requests for arXiv API
+requests>=2.28.0
+
+# HTML parsing for full paper text
+beautifulsoup4>=4.12.0

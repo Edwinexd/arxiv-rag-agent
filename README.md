@@ -2,6 +2,8 @@
 
 A scalable Retrieval-Augmented Generation (RAG) system for scientific research, developed for the Scalable Machine Learning course at KTH. This agent embeds daily ArXiv preprints and provides a conversational interface to explore and understand the latest research.
 
+**[Try the live demo](https://huggingface.co/spaces/Edwinexd/arxiv-rag-agent)**
+
 ![Chat Interface](screenshot.png)
 
 ## Features

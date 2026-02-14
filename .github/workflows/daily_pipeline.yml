@@ -1,9 +1,9 @@
 name: Daily arXiv Embeddings Pipeline
 
 on:
-  schedule:
+  #schedule:
     # Run Mon-Fri at 6:00 AM UTC (arXiv doesn't publish on weekends)
-    - cron: '0 6 * * 1-5'
+  #  - cron: '0 6 * * 1-5'
   workflow_dispatch:  # Allow manual trigger
 
 env:
